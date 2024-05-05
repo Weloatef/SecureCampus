@@ -1,0 +1,17 @@
+#camera-feed {
+    width: 100%; /* Adjust this value as needed */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover; /* This will ensure the video maintains aspect ratio */
+}
+
+/* Assuming the parent container of the video feed has a class of .camera-container */
+.camera-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: auto; /* Adjust this value as needed */
+    height: auto; /*Adjust this value as needed*/
+}
