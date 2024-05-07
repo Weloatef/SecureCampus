@@ -1,17 +1,22 @@
 #camera-feed {
     width: 100%; /* Adjust this value as needed */
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    object-fit: cover; /* This will ensure the video maintains aspect ratio */
-}
-
-/* Assuming the parent container of the video feed has a class of .camera-container */
-.camera-container {
-    display: flex;
+    height: 100vh; /* Take up the full viewport height */
+    display: flex; /* Use flex to center the .camera-container */
     justify-content: center;
     align-items: center;
+}
+
+.camera-container {
+    position: relative; /* Make this relative so the canvas can be positioned absolutely within it */
     border-radius: 10px;
-    width: auto; /* Adjust this value as needed */
-    height: auto; /*Adjust this value as needed*/
+    width: 720px; /* Set the width and height to match the video and canvas */
+    height: 560px;
+}
+
+.camera-container video, .camera-container canvas {
+    position: absolute; /* Position the canvas and video absolutely */
+    top: 0;
+    left: 0;
+    width: 720px;
+    height: 560px;
 }
