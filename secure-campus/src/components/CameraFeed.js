@@ -22,15 +22,28 @@ function CameraFeed() {
             console.error('getUserMedia is not supported');
         }
 
-        socketRef.current = io.connect('/'); // Connect to the server
+        socketRef.current = io.connect('/', {
+            'reconnection': true,
+            'reconnectionDelay': 1000,
+            'reconnectionDelayMax' : 5000,
+            'reconnectionAttempts': 5
+        });
+
+        socketRef.current.on('connect_error', (error) => {
+            console.error('Connection error:', error);
+        });
+
+        socketRef.current.on('reconnect_failed', () => {
+            console.error('Failed to reconnect');
+        });
 
         socketRef.current.on('face_detected', data => {
-            console.log(data);
+            console.log('Received face_detected event with data:', data);
             drawBox(data, 'red', 'Unknown');
         });
 
         socketRef.current.on('face_verified', data => {
-            console.log(data);
+            console.log('Received face_verified event with data:', data);
             drawBox(data, 'green', data.file_name);
         });
 
@@ -40,9 +53,13 @@ function CameraFeed() {
     }, []);
 
     const drawBox = (data, color, label) => {
+        if (!data || !data.x || !data.y || !data.w || !data.h) {
+            console.error('Invalid data:', data);
+            return;
+        }
+
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-        context.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
         context.beginPath();
         context.rect(data.x, data.y, data.w, data.h);
         context.lineWidth = 2;
