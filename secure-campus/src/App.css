@@ -44,3 +44,11 @@ body {
   background-position: center;
   background-size: cover;
 }
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Take up full height of the parent */
+  width: 100%; /* Take up full width of the parent */
+}

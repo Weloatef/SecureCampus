@@ -4,9 +4,9 @@
     padding: 5px;
     border-radius: 5px;
     color: white;
+    width: 710px;
     box-shadow: 0 0 5px rgb(0, 0, 0); /* Add a box shadow */
     font-family: Arial, sans-serif; /* Change the font family */
-    width: 46%; /* Set a specific width */
     margin: 0 auto; /* Center the container horizontally */
     border-color: #000000; /* Add border color */
 }

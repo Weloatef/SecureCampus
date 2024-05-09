@@ -14,12 +14,14 @@ function App() {
   return (
     <div >
       <Header />
-      <CameraFeed />
+      <div className="container1">
+          <CameraFeed />
+      </div>
       <Results />
-        {/* {
-            (typeof data.members === 'undefined') ? <p>loading...</p> : (data.members.map(
-                (member, i) => ( <p key={i}>{member}</p>))
-        )} */}
+      {/* {
+          (typeof data.members === 'undefined') ? <p>loading...</p> : (data.members.map(
+              (member, i) => ( <p key={i}>{member}</p>))
+      )} */}
     </div>
   )
 }
