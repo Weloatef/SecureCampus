@@ -16,12 +16,12 @@ app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Check if OpenCV was built with CUDA enabled
-if not cv2.cuda.getCudaEnabledDeviceCount():
-    print("OpenCV was not built with CUDA enabled. Build it from source with CUDA.")
-    exit()
+# if not cv2.cuda.getCudaEnabledDeviceCount():
+#     print("OpenCV was not built with CUDA enabled. Build it from source with CUDA.")
+#     exit()
 
 # Set the device to the first GPU
-cv2.cuda.setDevice(0)
+#cv2.cuda.setDevice(0)
 
 # Use the first GPU for TensorFlow operations
 with tf.device('/GPU:0'):
@@ -32,7 +32,7 @@ with tf.device('/GPU:0'):
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
     # Directory containing face images for verification
-    images_dir = "C:\\Users\\walid\\Downloads\\images"
+    images_dir = "./images"
 
     # Handle 'frame' events from the client
     @socketio.on('frame')
@@ -93,7 +93,7 @@ with tf.device('/GPU:0'):
                         # Store the file name in a string variable
                         file_name_string = str(file_name)
                         print(file_name_string)
-                        emit('face_verified', {'x': int(x.item()), 'y': int(y.item()), 'w': int(w.item()), 'h': int(h.item()), 'file_name': file_name_string})
+                        socketio.emit('face_verified', {'x': int(x), 'y': int(y), 'w': int(w), 'h': int(h), 'file_name': file_name_string})
 
                         # Draw a green rectangle around the face with the file name written
                         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
@@ -170,7 +170,8 @@ def index():
                 context.fillStyle = 'red';
                 context.stroke();
                 context.fillText('Unknown', data.x, data.y > 20 ? data.y - 5 : data.y + 10);
-            });
+});
+
 
             socket.on('face_verified', data => {
                 context.clearRect(0, 0, canvas.width, canvas.height);
