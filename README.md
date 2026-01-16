@@ -1,27 +1,42 @@
-# 🤖 AI-Powered Monitoring & Detection System
+# 🤖 AI-Powered Monitoring & Detection Web Application
 
 ## 🧠 Overview
-An end-to-end AI system designed to detect predefined behaviors in monitored environments using computer vision and machine learning techniques. The project focuses on real-time analysis, robustness, and security-aware system design.
+An end-to-end **web application** that integrates **computer vision and machine learning** to detect predefined behaviors in monitored environments.
+The system includes model training/evaluation, a real-time inference pipeline, and a web-based interface backed by API services for scalable deployment.
 
-## 🎯 Key Objectives
-- 👁️ Build intelligent detection models using computer vision  
-- 🤖 Design scalable and modular ML pipelines  
-- ⚙️ Enable real-time inference via API-based deployment  
-- 🛡️ Apply AI to security-focused monitoring use cases  
+---
+
+## 🎯 Key Features
+- 🌐 Web application interface for interacting with the system
+- 👁️ Computer vision–based detection and classification
+- 🤖 Multiple AI models integrated within a unified workflow
+- ⚡ Real-time inference pipeline
+- 🔌 API-based model access (Flask / FastAPI)
+- 🛡️ Security-aware system design considerations
+
+---
 
 ## 🏗️ System Architecture
-1. 📊 Data collection and preprocessing  
-2. 🧠 Model training and evaluation  
-3. ⚡ Inference pipeline  
-4. 🔌 REST API deployment using Flask / FastAPI  
+The solution is composed of three main layers:
 
-## 🧰 Technologies Used
-- Python  
-- Computer Vision  
-- Machine Learning / Deep Learning  
-- Flask  
-- FastAPI  
+1. **Web Application Layer**
+   - UI for uploads / requests / viewing outputs 
+   - Connects to inference endpoints
 
-## 📌 Notes
-Code and datasets are not publicly available due to academic and privacy constraints.  
-This repository serves as **technical documentation and system overview**.
+2. **AI Services Layer**
+   - Data preprocessing
+   - Model inference (real-time predictions)
+   - Optional: training & evaluation modules
+
+3. **API / Backend Layer**
+   - REST endpoints exposing AI inference
+   - Decoupled services for scalability and maintainability
+
+---
+
+## 🧰 Tech Stack
+- **Language:** Python
+- **AI / ML:** Machine Learning, Deep Learning, Computer Vision
+- **Backend / Web:** Flask/ FastAPI
+- **Other:** REST APIs, Git
+- **Optional:** Docker 
