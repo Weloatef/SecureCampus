@@ -1,0 +1,12 @@
+flask
+opencv-python
+torch
+torchvision
+ultralytics
+requests
+python-firebase
+os
+flask_mail
+pathlib
+numpy
+
